@@ -34,11 +34,21 @@ const Post = () => {
     setTrack((track + 1) % tracks.length)
   }
 
+  // name should ideally come from backend instead of manipulating here
+  function getName(url) {
+    if (!url) {
+      return ''
+    } else {
+      console.log(url)
+      return url.split('/')[2].split('.')[0]
+    }
+  }
+
   return (
     <>
       <Link href='/'>Back</Link>
       <div>{mode}</div>
-      <div>{tracks[track]}</div>
+      <div>{getName(tracks[track])}</div>
       <button onClick={skip}>Skip</button>
       <audio controls ref={ref}>
         <source src={tracks[track]} type='audio/mp3'></source>

@@ -6,21 +6,21 @@ export default function handler(req, res) {
 
   if (mode === 'focus') {
     tracks = [
-      'focus/aspen_migration.mp3',
-      'focus/cyan.mp3',
-      'focus/treasure_map.mp3'
+      '/focus/aspen_migration.mp3',
+      '/focus/cyan.mp3',
+      '/focus/treasure_map.mp3'
     ]
   } else if (mode === 'relax') {
     tracks = [
-      'relax/bathed_in_neon.mp3',
-      'relax/low_tide.mp3',
-      'relax/vapor.mp3'
+      '/relax/bathed_in_neon.mp3',
+      '/relax/low_tide.mp3',
+      '/relax/vapor.mp3'
     ]
   } else if (mode === 'sleep') {
     tracks = [
-      'sleep/dark_moon.mp3',
-      'sleep/lunaris.mp3',
-      'sleep/moonflower.mp3',
+      '/sleep/dark_moon.mp3',
+      '/sleep/lunaris.mp3',
+      '/sleep/moonflower.mp3',
     ]
   }
 
