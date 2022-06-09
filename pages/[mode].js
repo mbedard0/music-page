@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react'
 const Post = () => {
   const router = useRouter()
   const mode = router.query.mode
+  const [tracks, setTracks] = useState([])
   const [track, setTrack] = useState()
   const ref = useRef()
 
@@ -15,7 +16,8 @@ const Post = () => {
       fetch(`/api/tracks?mode=${mode}`)
         .then((res) => {
           res.json().then((json) => {
-            setTrack(json.path)
+            setTracks(json.tracks)
+            setTrack(0)
           })
         })
   }, [mode])
@@ -33,13 +35,18 @@ const Post = () => {
   } else if (mode === 'sleep') {
   }
 
+  function skip() {
+    setTrack(track + 1)
+  }
+
   return (
     <>
       <Link href='/'>Back</Link>
       <div>{mode}</div>
-      <div>{track}</div>
+      <div>{tracks[track]}</div>
+      <button onClick={skip}>Skip</button>
       <audio controls ref={ref}>
-        <source src={track} type='audio/mp3'></source>
+        <source src={tracks[track]} type='audio/mp3'></source>
       </audio>
     </>
   )
