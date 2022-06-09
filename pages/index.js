@@ -11,7 +11,6 @@ export default function Home() {
         <meta name="description" content="Relaxing music" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* focus, relax, sleep */}
       <main className={styles.main}>
         <Link href="/focus">Focus</Link>
         <Link href="/relax">Relax</Link>
