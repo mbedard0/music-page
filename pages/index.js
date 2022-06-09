@@ -12,7 +12,8 @@ export default function Home() {
       </Head>
       <main>
         <div className='min-h-screen flex flex-col items-center justify-center gap-2'>
-          <h1 className='text-3xl mb-3'>MUSIC PAGE</h1>
+          <h1 className='text-5xl'>MUSIC PAGE</h1>
+          <div className='mb-3'>Choose a mental state...</div>
           <Link href="/focus">
             <div className='btn btn-primary'>Focus</div>
           </Link>
