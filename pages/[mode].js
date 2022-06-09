@@ -26,17 +26,12 @@ const Post = () => {
     if(ref) {
       ref.current.pause();
       ref.current.load();
+      ref.current.play()
     }
 },[ref, track])
 
-
-  if (mode === 'focus') {
-  } else if (mode === 'relax') {
-  } else if (mode === 'sleep') {
-  }
-
   function skip() {
-    setTrack(track + 1)
+    setTrack((track + 1) % tracks.length)
   }
 
   return (
