@@ -13,22 +13,22 @@ const Post = () => {
     if (!mode) {
       return
     }
-      fetch(`/api/tracks?mode=${mode}`)
-        .then((res) => {
-          res.json().then((json) => {
-            setTracks(json.tracks)
-            setTrack(0)
-          })
+    fetch(`/api/tracks?mode=${mode}`)
+      .then((res) => {
+        res.json().then((json) => {
+          setTracks(json.tracks)
+          setTrack(0)
         })
+      })
   }, [mode])
 
   useEffect(() => {
-    if(ref) {
+    if (ref) {
       ref.current.pause();
       ref.current.load();
-      // ref.current.play()
+      ref.current.play()
     }
-},[ref, track])
+  }, [ref, track])
 
   function skip() {
     setTrack((track + 1) % tracks.length)
@@ -44,15 +44,19 @@ const Post = () => {
   }
 
   return (
-    <>
-      <Link href='/'>Back</Link>
-      <div className='text-7xl'>{mode}</div>
+    <div className='min-h-screen flex flex-col items-center justify-center gap-2'>
+      <div className='text-6xl uppercase'>{mode}</div>
       <div>{getName(tracks[track])}</div>
-      <button onClick={skip}>Skip</button>
+      <button onClick={skip} className='btn btn-active btn-ghost'>Skip</button>
       <audio controls ref={ref}>
         <source src={tracks[track]} type='audio/mp3'></source>
       </audio>
-    </>
+      <Link href='/'>
+        <div className='btn btn-warning'>
+          Back
+        </div>
+      </Link>
+    </div>
   )
 }
 
