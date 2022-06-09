@@ -1,36 +1,48 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useState, useEffect, useRef } from 'react'
 
 const Post = () => {
   const router = useRouter()
   const mode = router.query.mode
+  const [track, setTrack] = useState()
+  const ref = useRef()
 
-  const track = '/focus/aspen_migration.mp3'
+  useEffect(() => {
+    if (!mode) {
+      return
+    }
+      fetch(`/api/tracks?mode=${mode}`)
+        .then((res) => {
+          res.json().then((json) => {
+            setTrack(json.path)
+          })
+        })
+  }, [mode])
+
+  useEffect(() => {
+    if(ref) {
+      ref.current.pause();
+      ref.current.load();
+    }
+},[ref, track])
+
 
   if (mode === 'focus') {
-    return (
-      <>
-        <Link href='/'>Back</Link>
-        <div>{mode}</div>
-        <div>{track}</div>
-        <audio controls>
-          <source src={track} type='audio/mp3'></source>
-        </audio>
-      </>
-    )
   } else if (mode === 'relax') {
-    return (
-      <>
-      sleep
-      </>
-    )
   } else if (mode === 'sleep') {
-    return (
-      <>
-      sleep
-      </>
-    )
   }
+
+  return (
+    <>
+      <Link href='/'>Back</Link>
+      <div>{mode}</div>
+      <div>{track}</div>
+      <audio controls ref={ref}>
+        <source src={track} type='audio/mp3'></source>
+      </audio>
+    </>
+  )
 }
 
 export default Post
