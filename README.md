@@ -5,5 +5,5 @@ Use Music Page to play music to match three mental states: focus, relax, or slee
 
 Music Page is deployed <a target='blank' href='https://music-page-dun.vercel.app/'>here</a>.
 
-To run this locally, run 'npm run dev'.
+To run this locally, run 'npm install' and then 'npm run dev'.
 </p>
