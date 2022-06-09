@@ -26,7 +26,7 @@ const Post = () => {
     if(ref) {
       ref.current.pause();
       ref.current.load();
-      ref.current.play()
+      // ref.current.play()
     }
 },[ref, track])
 
@@ -39,7 +39,6 @@ const Post = () => {
     if (!url) {
       return ''
     } else {
-      console.log(url)
       return url.split('/')[2].split('.')[0]
     }
   }
@@ -47,7 +46,7 @@ const Post = () => {
   return (
     <>
       <Link href='/'>Back</Link>
-      <div>{mode}</div>
+      <div className='text-7xl'>{mode}</div>
       <div>{getName(tracks[track])}</div>
       <button onClick={skip}>Skip</button>
       <audio controls ref={ref}>
